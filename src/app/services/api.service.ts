@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class ApiService {
     private _httpClient: HttpClient,
   ) { }
 
-  public getTypePequest(url: string): Observable<any> {
+  public getTypeRequest(url: string): Observable<any> {
     return this._httpClient.get(`${this._BASEURL}${url}`).pipe(
       map(result => {
         return result;
@@ -21,7 +21,7 @@ export class ApiService {
     )
   };
 
-  public postTypePequest(url: string, data: any):  Observable<any> {
+  public postTypeRequest(url: string, data: any):  Observable<any> {
     return this._httpClient.post(`${this._BASEURL}${url}`, data).pipe(
       map(result => {
         return result;
@@ -29,7 +29,7 @@ export class ApiService {
     )
   };
 
-  public putTypePequest(url: string, data: any):  Observable<any> {
+  public putTypeRequest(url: string, data: any):  Observable<any> {
     return this._httpClient.post(`${this._BASEURL}${url}`, data).pipe(
       map(result => {
         return result;

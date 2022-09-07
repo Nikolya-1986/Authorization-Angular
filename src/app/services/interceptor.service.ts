@@ -14,19 +14,20 @@ export class InterceptorService implements HttpInterceptor {
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this._localStorageService.getToken();
-    if(!request.headers.has('Content-Type')) {
-      request = request.clone({
-        headers: request.headers.set('Content-Type', 'application/json'),
-      })
-    } 
-    const authRequest = request.clone({
-      headers: request.headers.set('Accept', 'application/json'),
-    }).clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    return next.handle(authRequest);
+    console.log("Token from interceptor", token);
+
+    if (token != null) {
+      request = request.clone(
+        {
+          setHeaders: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+           }
+        }
+      )
+    }
+    return next.handle(request);
   };
 
 }
