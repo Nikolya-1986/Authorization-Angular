@@ -1,13 +1,13 @@
-<section>
+<section  class="row m-0 w-100">
     <h2 style="margin-top: 30px;">
         This is the protected profile page
     </h2>
     
     <p *ngIf="this.protectedData?.data">
-        {{ this.protectedData.data.userName }}
+        name: {{ this.protectedData.data.name }}
     </p>
     
     <p *ngIf="this.protectedData?.data">
-        {{ this.protectedData.data.userWebsite }}
+        email: {{ this.protectedData.data.email }}
     </p>
 </section>
